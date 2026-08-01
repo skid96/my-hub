@@ -2,6 +2,12 @@ import { useDayTheme } from './hooks/useDayTheme'
 import Greeting from './components/Greeting'
 import DayCard from './components/DayCard'
 import Notes from './components/Notes'
+import MoodTracker from './components/MoodTracker'
+import HabitTracker from './components/HabitTracker'
+import TodayTasks from './components/TodayTasks'
+import Countdowns from './components/Countdowns'
+import SnakeGame from './components/SnakeGame'
+import ShooterRange from './components/ShooterRange'
 import './App.css'
 
 export default function App() {
@@ -26,6 +32,12 @@ export default function App() {
         <Greeting theme={theme} now={now} />
         <div className="app__stack">
           <DayCard />
+          <SnakeGame />
+          <ShooterRange />
+          <MoodTracker />
+          <TodayTasks />
+          <HabitTracker />
+          <Countdowns />
           <Notes />
         </div>
       </div>
