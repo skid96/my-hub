@@ -1,0 +1,255 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+  color: var(--text);
+  transition: color 0.8s ease;
+}
+
+/* Живой градиентный фон, меняется по теме через CSS-переменные */
+.app__bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(160deg, var(--g1) 0%, var(--g2) 45%, var(--g3) 100%);
+  background-size: 220% 220%;
+  animation: drift 22s ease-in-out infinite;
+  transition: background 1.2s ease;
+}
+
+.app__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(60px);
+}
+
+@keyframes drift {
+  0% { background-position: 0% 20%; }
+  50% { background-position: 100% 80%; }
+  100% { background-position: 0% 20%; }
+}
+
+.app__content {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 56px 20px 60px;
+}
+
+/* --- Greeting --- */
+.greeting {
+  padding: 0 4px 28px;
+}
+
+.greeting__clock {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+
+.greeting__date {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 2px;
+  text-transform: capitalize;
+}
+
+.greeting__title {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 14px 0 4px;
+  line-height: 1.1;
+}
+
+.greeting__sub {
+  font-size: 15px;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+/* --- Stack --- */
+.app__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* --- Card, iOS glass style --- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 22px;
+  padding: 20px;
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: background 0.8s ease, border-color 0.8s ease;
+}
+
+.card__label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.card__quote {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 10px 0 4px;
+}
+
+.card__author {
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.card__divider {
+  height: 1px;
+  background: var(--surface-border);
+  margin: 16px 0;
+}
+
+.card__fact {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-soft);
+  margin: 8px 0 0;
+}
+
+/* --- Notes card --- */
+.notes-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-size: 19px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.icon-btn:active {
+  transform: scale(0.9);
+  opacity: 0.85;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--surface-border);
+}
+
+.note-form__title,
+.note-form__body {
+  background: rgba(127, 127, 127, 0.1);
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--text);
+  resize: none;
+}
+
+.note-form__title::placeholder,
+.note-form__body::placeholder {
+  color: var(--text-soft);
+}
+
+.note-form__save {
+  align-self: flex-end;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.note-form__save:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+.note-list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.note-list__empty {
+  font-size: 13px;
+  color: var(--text-soft);
+  padding: 10px 2px;
+  text-align: center;
+}
+
+.note-list__item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 4px;
+  border-top: 1px solid var(--surface-border);
+}
+
+.note-list__item:first-child {
+  border-top: none;
+}
+
+.note-list__text {
+  min-width: 0;
+}
+
+.note-list__title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.note-list__body {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 2px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.note-list__delete {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(127, 127, 127, 0.18);
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
