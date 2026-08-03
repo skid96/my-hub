@@ -34,7 +34,7 @@ export default function AiChat() {
       const data = await res.json()
       setMessages((prev) => [...prev, { role: 'assistant', content: data.reply }])
     } catch {
-      setError('Не удалось получить ответ. Проверь ключ DEEPSEEK_API_KEY в настройках Vercel.')
+      setError('Не удалось получить ответ. Проверь ключ OPENROUTER_API_KEY в настройках Vercel.')
     } finally {
       setLoading(false)
     }
