@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         'X-Title': 'My Hub',
       },
       body: JSON.stringify({
-        model: 'nvidia/nemotron-3-ultra-550b-a55b:free',
+        model: 'inclusionai/ling-3.0-flash:free',
         messages: [
           {
             role: 'system',
